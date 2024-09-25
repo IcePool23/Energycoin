@@ -1,0 +1,92 @@
+#!/sbin/runscript
+
+# backward compatibility for existing gentoo layout 
+#
+if [ -d "/var/lib/nrgc/.nrgc" ]; then
+	NRGCD_DEFAULT_DATADIR="/var/lib/nrgc/.nrgc"
+else
+	NRGCD_DEFAULT_DATADIR="/var/lib/nrgcd"
+fi
+
+NRGCD_CONFIGFILE=${NRGCD_CONFIGFILE:-/etc/nrgc/nrgc.conf}
+NRGCD_PIDDIR=${NRGCD_PIDDIR:-/var/run/nrgcd}
+NRGCD_PIDFILE=${NRGCD_PIDFILE:-${NRGCD_PIDDIR}/nrgcd.pid}
+NRGCD_DATADIR=${NRGCD_DATADIR:-${NRGCD_DEFAULT_DATADIR}}
+NRGCD_USER=${NRGCD_USER:-${NRGC_USER:-nrgc}}
+NRGCD_GROUP=${NRGCD_GROUP:-nrgc}
+NRGCD_BIN=${NRGCD_BIN:-/usr/bin/nrgcd}
+NRGCD_NICE=${NRGCD_NICE:-${NICELEVEL:-0}}
+NRGCD_OPTS="${NRGCD_OPTS:-${NRGC_OPTS}}"
+
+name="Nrgc Core Daemon"
+description="Nrgc cryptocurrency P2P network daemon"
+
+command="/usr/bin/nrgcd"
+command_args="-pid=\"${NRGCD_PIDFILE}\" \
+		-conf=\"${NRGCD_CONFIGFILE}\" \
+		-datadir=\"${NRGCD_DATADIR}\" \
+		-daemon \
+		${NRGCD_OPTS}"
+
+required_files="${NRGCD_CONFIGFILE}"
+start_stop_daemon_args="-u ${NRGCD_USER} \
+			-N ${NRGCD_NICE} -w 2000"
+pidfile="${NRGCD_PIDFILE}"
+
+# The retry schedule to use when stopping the daemon. Could be either
+# a timeout in seconds or multiple signal/timeout pairs (like
+# "SIGKILL/180 SIGTERM/300")
+retry="${NRGCD_SIGTERM_TIMEOUT}"
+
+depend() {
+	need localmount net
+}
+
+# verify
+# 1) that the datadir exists and is writable (or create it)
+# 2) that a directory for the pid exists and is writable
+# 3) ownership and permissions on the config file
+start_pre() {
+	checkpath \
+	-d \
+	--mode 0750 \
+	--owner "${NRGCD_USER}:${NRGCD_GROUP}" \
+	"${NRGCD_DATADIR}"
+
+	checkpath \
+	-d \
+	--mode 0755 \
+	--owner "${NRGCD_USER}:${NRGCD_GROUP}" \
+	"${NRGCD_PIDDIR}"
+
+	checkpath -f \
+	-o ${NRGCD_USER}:${NRGCD_GROUP} \
+	-m 0660 \
+	${NRGCD_CONFIGFILE}
+
+	checkconfig || return 1
+}
+
+checkconfig()
+{
+	if ! grep -qs '^rpcpassword=' "${NRGCD_CONFIGFILE}" ; then
+		eerror ""
+		eerror "ERROR: You must set a secure rpcpassword to run nrgcd."
+		eerror "The setting must appear in ${NRGCD_CONFIGFILE}"
+		eerror ""
+		eerror "This password is security critical to securing wallets "
+		eerror "and must not be the same as the rpcuser setting."
+		eerror "You can generate a suitable random password using the following "
+		eerror "command from the shell:"
+		eerror ""
+		eerror "bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo'"
+		eerror ""
+		eerror "It is recommended that you also set alertnotify so you are "
+		eerror "notified of problems:"
+		eerror ""
+		eerror "ie: alertnotify=echo %%s | mail -s \"Nrgc Alert\"" \
+			"admin@foo.com"
+		eerror ""
+		return 1
+	fi
+}

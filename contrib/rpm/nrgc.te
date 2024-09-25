@@ -1,0 +1,81 @@
+policy_module(nrgc, 1.100.1)
+
+########################################
+#
+# Declarations
+#
+
+type nrgc_t;
+type nrgc_exec_t;
+init_daemon_domain(nrgc_t, nrgc_exec_t)
+
+permissive nrgc_t;
+
+type nrgc_initrc_exec_t;
+init_script_file(nrgc_initrc_exec_t)
+
+type nrgc_conf_t;
+files_type(nrgc_conf_t)
+
+type nrgc_var_lib_t;
+files_type(nrgc_var_lib_t)
+
+type nrgc_var_run_t;
+files_type(nrgc_var_run_t)
+
+type nrgc_port_t;
+corenet_port(nrgc_port_t)
+
+########################################
+#
+# nrgc local policy
+#
+allow nrgc_t self:process { fork };
+
+allow nrgc_t self:fifo_file rw_fifo_file_perms;
+allow nrgc_t self:unix_stream_socket create_stream_socket_perms;
+
+manage_dirs_pattern(nrgc_t, nrgc_conf_t, nrgc_conf_t)
+manage_files_pattern(nrgc_t, nrgc_conf_t, nrgc_conf_t)
+
+manage_dirs_pattern(nrgc_t, nrgc_var_lib_t, nrgc_var_lib_t)
+manage_files_pattern(nrgc_t, nrgc_var_lib_t, nrgc_var_lib_t)
+files_var_lib_filetrans(nrgc_t, nrgc_var_lib_t, { dir file })
+
+manage_dirs_pattern(nrgc_t, nrgc_var_run_t, nrgc_var_run_t)
+manage_files_pattern(nrgc_t, nrgc_var_run_t, nrgc_var_run_t)
+
+sysnet_dns_name_resolve(nrgc_t)
+corenet_all_recvfrom_unlabeled(nrgc_t)
+
+allow nrgc_t self:tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_generic_if(nrgc_t)
+corenet_tcp_sendrecv_generic_node(nrgc_t)
+corenet_tcp_sendrecv_all_ports(nrgc_t)
+corenet_tcp_bind_generic_node(nrgc_t)
+
+gen_require(`
+    type nrgc_port_t;
+')
+allow nrgc_t nrgc_port_t:tcp_socket name_bind;
+
+gen_require(`
+    type nrgc_port_t;
+')
+allow nrgc_t nrgc_port_t:tcp_socket name_connect;
+
+domain_use_interactive_fds(nrgc_t)
+
+files_read_etc_files(nrgc_t)
+
+miscfiles_read_localization(nrgc_t)
+
+sysnet_dns_name_resolve(nrgc_t)
+
+allow nrgc_t nrgc_exec_t:file execute_no_trans;
+allow nrgc_t self:process setsched;
+corecmd_exec_ls(nrgc_t)
+corenet_tcp_connect_http_port(nrgc_t)
+dev_read_urand(nrgc_t)
+fs_getattr_xattr_fs(nrgc_t)
+kernel_read_system_state(nrgc_t)

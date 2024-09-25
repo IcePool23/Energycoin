@@ -1,0 +1,33 @@
+# /etc/conf.d/nrgcd: config file for /etc/init.d/nrgcd
+
+# Config file location
+#NRGCD_CONFIGFILE="/etc/nrgc/nrgc.conf"
+
+# What directory to write pidfile to?  (created and owned by $NRGCD_USER)
+#NRGCD_PIDDIR="/var/run/nrgcd"
+
+# What filename to give the pidfile
+#NRGCD_PIDFILE="${NRGCD_PIDDIR}/nrgcd.pid"
+
+# Where to write nrgcd data (be mindful that the blockchain is large)
+#NRGCD_DATADIR="/var/lib/nrgcd"
+
+# User and group to own nrgcd process
+#NRGCD_USER="nrgc"
+#NRGCD_GROUP="nrgc"
+
+# Path to nrgcd executable
+#NRGCD_BIN="/usr/bin/nrgcd"
+
+# Nice value to run nrgcd under
+#NRGCD_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#NRGCD_OPTS=""
+
+# The timeout in seconds OpenRC will wait for nrgcd to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+NRGCD_SIGTERM_TIMEOUT=60

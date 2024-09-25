@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Nrgc Core
+Comment=Connect to the Nrgc P2P Network
+Comment[de]=Verbinde mit dem Nrgc peer-to-peer Netzwerk
+Comment[fr]=Nrgc, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Nrgc, eşten eşe kriptografik sanal para birimi
+Exec=nrgc-qt %u
+Terminal=false
+Type=Application
+Icon=nrgc128
+MimeType=x-scheme-handler/nrgc;
+Categories=Office;Finance;

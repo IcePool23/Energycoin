@@ -1,0 +1,6 @@
+usr/local/bin/nrgc-qt usr/bin
+share/pixmaps/nrgc32.xpm usr/share/pixmaps
+share/pixmaps/nrgc16.xpm usr/share/pixmaps
+share/pixmaps/nrgc128.png usr/share/pixmaps
+debian/nrgc-qt.desktop usr/share/applications
+debian/nrgc-qt.protocol usr/share/kde4/services/

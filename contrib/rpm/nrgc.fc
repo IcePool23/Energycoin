@@ -1,0 +1,8 @@
+/usr/bin/nrgc-cli		--	gen_context(system_u:object_r:nrgc_exec_t,s0)
+/usr/sbin/nrgcd		--	gen_context(system_u:object_r:nrgc_exec_t,s0)
+/usr/lib(64)?/nrgc/nrgcd		--	gen_context(system_u:object_r:nrgc_exec_t,s0)
+
+/etc/nrgc(/.*)?		gen_context(system_u:object_r:nrgc_conf_t,s0)
+/var/lib/nrgc(/.*)?		gen_context(system_u:object_r:nrgc_var_lib_t,s0)
+
+(/var)?/run/nrgcd(/.*)?   gen_context(system_u:object_r:nrgc_var_run_t,s0)
