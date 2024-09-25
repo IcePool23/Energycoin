@@ -305,7 +305,7 @@ public:
     	// assert(consensus.hashGenesisBlock == uint256S("000000181ba07f82878f548c2f3e00f176e1e9deacdccac87b13ae3885ecc3c7"));
     	// assert(genesis.hashMerkleRoot == uint256S("5cea53563cff1395d6da77cafeb5ee426ac6be7fe9166a3c0e696c38fa0be698"));
 
-	assert(consensus.hashGenesisBlock == uint256S("0x0046e5fbb1efd97f16be3d0d6e647d5157212718bf5f9ab3cd3c3e58523a9ff8")); // Mined genesis block hash
+	assert(consensus.hashGenesisBlock == uint256S("0x0af6c694a3e7b364b1d2fffceb62721457ff7877e91cdb291101ab54eb0fc319")); // Mined genesis block hash
 	assert(genesis.hashMerkleRoot == uint256S("0x6fd78a1beb36e54d4fe98299e5895b7ef9ab352282350b2ff459e9c04b77e15a")); // Mined Merkle root
 
 
