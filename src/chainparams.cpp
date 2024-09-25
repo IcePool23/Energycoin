@@ -157,7 +157,7 @@ public:
 	arith_uint256 test;
 bool fNegative;
 bool fOverflow;
-test.SetCompact(0x1e00ffff, &fNegative, &fOverflow);
+test.SetCompact(0x2000ffff, &fNegative, &fOverflow);
 std::cout << "Test threshold: " << test.GetHex() << "\n\n";
 
 int genesisNonce = 0;
@@ -166,7 +166,7 @@ uint256 BestBlockHash = uint256S("0xffffffffffffffffffffffffffffffffffffffffffff
 
 for (int i = 0; i < 40000000; i++) {
     // Create genesis block
-    genesis = CreateGenesisBlock(nGenesisTime, i, 0x1e00ffff, 4, 3000 * COIN);
+    genesis = CreateGenesisBlock(nGenesisTime, i, 0x2000ffff, 4, 3000 * COIN);
     std::cout << "Attempting with Nonce: " << i << std::endl;
 
     // Hash the genesis block with X16R or X16RV2
