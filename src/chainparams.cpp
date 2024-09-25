@@ -154,71 +154,71 @@ public:
 
    		uint32_t nGenesisTime = 1727286590; // 2024-04-27 14:00:00 UTC
 
-	arith_uint256 test;
-bool fNegative;
-bool fOverflow;
-test.SetCompact(0x2000ffff, &fNegative, &fOverflow);
-std::cout << "Test threshold: " << test.GetHex() << "\n\n";
+// 	arith_uint256 test;
+// bool fNegative;
+// bool fOverflow;
+// test.SetCompact(0x2000ffff, &fNegative, &fOverflow);
+// std::cout << "Test threshold: " << test.GetHex() << "\n\n";
 
-int genesisNonce = 0;
-uint256 TempHashHolding = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000");
-uint256 BestBlockHash = uint256S("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+// int genesisNonce = 0;
+// uint256 TempHashHolding = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000");
+// uint256 BestBlockHash = uint256S("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
 
-for (int i = 0; i < 40000000; i++) {
-    // Create genesis block
-    genesis = CreateGenesisBlock(nGenesisTime, i, 0x2000ffff, 4, 3000 * COIN);
-    std::cout << "Attempting with Nonce: " << i << std::endl;
+// for (int i = 0; i < 40000000; i++) {
+//     // Create genesis block
+//     genesis = CreateGenesisBlock(nGenesisTime, i, 0x2000ffff, 4, 3000 * COIN);
+//     std::cout << "Attempting with Nonce: " << i << std::endl;
 
-    // Hash the genesis block with X16R or X16RV2
-    consensus.hashGenesisBlock = genesis.GetX16RHash();
-    std::cout << "Current Genesis Hash: " << consensus.hashGenesisBlock.GetHex() << std::endl;
+//     // Hash the genesis block with X16R or X16RV2
+//     consensus.hashGenesisBlock = genesis.GetX16RHash();
+//     std::cout << "Current Genesis Hash: " << consensus.hashGenesisBlock.GetHex() << std::endl;
 
-    // Compare with best hash so far
-    arith_uint256 BestBlockHashArith = UintToArith256(BestBlockHash);
-    if (UintToArith256(consensus.hashGenesisBlock) < BestBlockHashArith) {
-        BestBlockHash = consensus.hashGenesisBlock;
-        std::cout << "New Best Block Hash Found: " << BestBlockHash.GetHex() << std::endl;
-        std::cout << "   Previous Block Hash: " << genesis.hashPrevBlock.GetHex() << std::endl;
-        std::cout << "   Merkle Root: " << genesis.hashMerkleRoot.GetHex() << std::endl;
-    }
+//     // Compare with best hash so far
+//     arith_uint256 BestBlockHashArith = UintToArith256(BestBlockHash);
+//     if (UintToArith256(consensus.hashGenesisBlock) < BestBlockHashArith) {
+//         BestBlockHash = consensus.hashGenesisBlock;
+//         std::cout << "New Best Block Hash Found: " << BestBlockHash.GetHex() << std::endl;
+//         std::cout << "   Previous Block Hash: " << genesis.hashPrevBlock.GetHex() << std::endl;
+//         std::cout << "   Merkle Root: " << genesis.hashMerkleRoot.GetHex() << std::endl;
+//     }
 
-    TempHashHolding = consensus.hashGenesisBlock;
+//     TempHashHolding = consensus.hashGenesisBlock;
 
-    // Check if this hash meets the target difficulty
-    if (BestBlockHashArith < test) {
-        genesisNonce = i;
-        std::cout << "Genesis Block Mined!" << std::endl;
-        std::cout << "Nonce: " << i << std::endl;
-        break;
-    }
+//     // Check if this hash meets the target difficulty
+//     if (BestBlockHashArith < test) {
+//         genesisNonce = i;
+//         std::cout << "Genesis Block Mined!" << std::endl;
+//         std::cout << "Nonce: " << i << std::endl;
+//         break;
+//     }
 
-    // Print every 1000000 iterations for feedback
-    if (i % 10 == 0) {
-        std::cout << "Still working... Current Nonce: " << i << std::endl;
-    }
-}
+//     // Print every 1000000 iterations for feedback
+//     if (i % 10 == 0) {
+//         std::cout << "Still working... Current Nonce: " << i << std::endl;
+//     }
+// }
 
-std::cout << "\nGenesis Block Found!" << std::endl;
-std::cout << "hashGenesisBlock: " << BestBlockHash.GetHex() << std::endl;
-std::cout << "Genesis Nonce: " << genesisNonce << std::endl;
-std::cout << "Genesis Merkle Root: " << genesis.hashMerkleRoot.GetHex() << std::endl;
+// std::cout << "\nGenesis Block Found!" << std::endl;
+// std::cout << "hashGenesisBlock: " << BestBlockHash.GetHex() << std::endl;
+// std::cout << "Genesis Nonce: " << genesisNonce << std::endl;
+// std::cout << "Genesis Merkle Root: " << genesis.hashMerkleRoot.GetHex() << std::endl;
 
-std::cout << "\nStatistics:\n";
-int totalHits = 0;
-double totalTime = 0.0;
-for (int x = 0; x < 16; x++) {
-    totalHits += algoHashHits[x];
-    totalTime += algoHashTotal[x];
-    std::cout << "Hash Algorithm " << x << ": Hits = " << algoHashHits[x] 
-              << ", Total Time = " << algoHashTotal[x] 
-              << ", Average Time = " << algoHashTotal[x] / algoHashHits[x] << std::endl;
-}
+// std::cout << "\nStatistics:\n";
+// int totalHits = 0;
+// double totalTime = 0.0;
+// for (int x = 0; x < 16; x++) {
+//     totalHits += algoHashHits[x];
+//     totalTime += algoHashTotal[x];
+//     std::cout << "Hash Algorithm " << x << ": Hits = " << algoHashHits[x] 
+//               << ", Total Time = " << algoHashTotal[x] 
+//               << ", Average Time = " << algoHashTotal[x] / algoHashHits[x] << std::endl;
+// }
 
-std::cout << "Total Hits: " << totalHits << ", Total Time: " << totalTime 
-          << ", Average Time per Hit: " << totalTime / totalHits << std::endl;
+// std::cout << "Total Hits: " << totalHits << ", Total Time: " << totalTime 
+//           << ", Average Time per Hit: " << totalTime / totalHits << std::endl;
 
-genesis.hashPrevBlock = TempHashHolding;
-return;
+// genesis.hashPrevBlock = TempHashHolding;
+// return;
 
 
 
@@ -294,7 +294,7 @@ return;
         nDefaultPort = 9876;
         nPruneAfterHeight = 100000;
 
-    	//genesis = CreateGenesisBlock(nGenesisTime, 21553080, 0x1e00ffff, 4, 3000 * COIN);
+    	genesis = CreateGenesisBlock(nGenesisTime, 120, 0x2000ffff, 4, 3000 * COIN);
 
     	consensus.hashGenesisBlock = genesis.GetX16RHash();
 
@@ -302,8 +302,12 @@ return;
     	printf("Merkle = %s \n", genesis.hashMerkleRoot.ToString().c_str());
     	printf("Nonce = %u \n",  genesis.nNonce);
 
-    	//assert(consensus.hashGenesisBlock == uint256S("000000181ba07f82878f548c2f3e00f176e1e9deacdccac87b13ae3885ecc3c7"));
-    	//assert(genesis.hashMerkleRoot == uint256S("5cea53563cff1395d6da77cafeb5ee426ac6be7fe9166a3c0e696c38fa0be698"));
+    	// assert(consensus.hashGenesisBlock == uint256S("000000181ba07f82878f548c2f3e00f176e1e9deacdccac87b13ae3885ecc3c7"));
+    	// assert(genesis.hashMerkleRoot == uint256S("5cea53563cff1395d6da77cafeb5ee426ac6be7fe9166a3c0e696c38fa0be698"));
+
+	assert(consensus.hashGenesisBlock == uint256S("0x0046e5fbb1efd97f16be3d0d6e647d5157212718bf5f9ab3cd3c3e58523a9ff8")); // Mined genesis block hash
+	assert(genesis.hashMerkleRoot == uint256S("0x6fd78a1beb36e54d4fe98299e5895b7ef9ab352282350b2ff459e9c04b77e15a")); // Mined Merkle root
+
 
 
     	base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,76);  // X and 0x4c
