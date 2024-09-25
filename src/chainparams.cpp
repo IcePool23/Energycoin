@@ -44,7 +44,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
 
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-	const char* pszTimestamp = "The WSJ 2024-04-22 Sam Altman Invests in Energy Startup Focused on AI Data Centers";
+	const char* pszTimestamp = "ENERGY START";
 	const CScript genesisOutputScript = CScript() << ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf22d5f") << OP_CHECKSIG;
 	return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -107,7 +107,7 @@ class CMainParams : public CChainParams {
 public:
 	CMainParams() {
     	strNetworkID = "main";
-    	consensus.nSubsidyHalvingInterval = 129600;  // 90 days at 1 min block time
+    	consensus.nSubsidyHalvingInterval = 210000;  // 90 days at 1 min block time
     	consensus.nBIP34Enabled = true;
     	consensus.nBIP65Enabled = true;
     	consensus.nBIP66Enabled = true;
@@ -117,7 +117,7 @@ public:
     	consensus.kawpowLimit = uint256S("0000000000ffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // Estimated starting diff for first 180 kawpow blocks
     	consensus.nPowTargetTimespan = 2016 * 60; // 1.4 days
     	consensus.nPowTargetSpacing = 1 * 60;
-		consensus.fPowAllowMinDifficultyBlocks = false;
+	consensus.fPowAllowMinDifficultyBlocks = false;
     	consensus.fPowNoRetargeting = false;
     	consensus.nRuleChangeActivationThreshold = 1613; // Approx 80% of 2016
     	consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
@@ -152,8 +152,8 @@ public:
     	consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].nOverrideRuleChangeActivationThreshold = 1411; 
     	consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].nOverrideMinerConfirmationWindow = 2016;
 
-   		uint32_t nGenesisTime = 1714226400; // 2024-04-27 14:00:00 UTC
-/*
+   		uint32_t nGenesisTime = 1727286590; // 2024-04-27 14:00:00 UTC
+
     	arith_uint256 test;
     	bool fNegative;
     	bool fOverflow;
@@ -164,7 +164,7 @@ public:
     	uint256 TempHashHolding = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000");
     	uint256 BestBlockHash = uint256S("0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
     	for (int i=0;i<40000000;i++) {
-        	genesis = CreateGenesisBlock(nGenesisTime, i, 0x1e00ffff, 4, 600 * COIN);
+        	genesis = CreateGenesisBlock(nGenesisTime, i, 0x1e00ffff, 4, 3000 * COIN);
         	//genesis.hashPrevBlock = TempHashHolding;
         	// Depending on when the timestamp is on the genesis block. You will need to use GetX16RHash or GetX16RV2Hash. Replace GetHash() with these below
         	consensus.hashGenesisBlock = genesis.GetX16RHash();
@@ -209,23 +209,22 @@ public:
 
     	return;
  
-*/
 
     	// The best chain should have at least this much work
-    	consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000000000000000000"); // New blockchain
+    	consensus.nMinimumChainWork = uint256S("0x00"); // New blockchain
 
     	// By default assume that the signatures in ancestors of this block are valid. Block# 0
-    	consensus.defaultAssumeValid = uint256S("0x000000181ba07f82878f548c2f3e00f176e1e9deacdccac87b13ae3885ecc3c7"); // Genesis block
+    	consensus.defaultAssumeValid = uint256S("0x00"); // Genesis block
 
 
-    	pchMessageStart[0] = 0x41; // A
-    	pchMessageStart[1] = 0x49; // I
-    	pchMessageStart[2] = 0x44; // D
-    	pchMessageStart[3] = 0x50; // P
-    	nDefaultPort = 17001;
-    	nPruneAfterHeight = 100000;
+        pchMessageStart[0] = 0x46; // F
+        pchMessageStart[1] = 0x52; // R
+        pchMessageStart[2] = 0x45; // E
+        pchMessageStart[3] = 0x45; // E
+        nDefaultPort = 9876;
+        nPruneAfterHeight = 100000;
 
-    	genesis = CreateGenesisBlock(nGenesisTime, 21553080, 0x1e00ffff, 4, 600 * COIN);
+    	//genesis = CreateGenesisBlock(nGenesisTime, 21553080, 0x1e00ffff, 4, 3000 * COIN);
 
     	consensus.hashGenesisBlock = genesis.GetX16RHash();
 
@@ -233,15 +232,12 @@ public:
     	printf("Merkle = %s \n", genesis.hashMerkleRoot.ToString().c_str());
     	printf("Nonce = %u \n",  genesis.nNonce);
 
-    	assert(consensus.hashGenesisBlock == uint256S("000000181ba07f82878f548c2f3e00f176e1e9deacdccac87b13ae3885ecc3c7"));
-    	assert(genesis.hashMerkleRoot == uint256S("5cea53563cff1395d6da77cafeb5ee426ac6be7fe9166a3c0e696c38fa0be698"));
+    	//assert(consensus.hashGenesisBlock == uint256S("000000181ba07f82878f548c2f3e00f176e1e9deacdccac87b13ae3885ecc3c7"));
+    	//assert(genesis.hashMerkleRoot == uint256S("5cea53563cff1395d6da77cafeb5ee426ac6be7fe9166a3c0e696c38fa0be698"));
 
-    	vSeeds.emplace_back("dns.ai-depin.org", false);
-    	vSeeds.emplace_back("eur-seed1.ai-depin.org", false);
-    	vSeeds.emplace_back("eur-seed2.ai-depin.org", false);
 
     	base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,76);  // X and 0x4c
-    	base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,76);  // X and 0x4c
+    	base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,33);
     	base58Prefixes[SECRET_KEY] = 	std::vector<unsigned char>(1,128);
     	base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x88, 0xB2, 0x1E};
     	base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x88, 0xAD, 0xE4};
@@ -285,18 +281,18 @@ public:
 	nCommunityAutonomousAmount = 10;
 
     	// Burn Addresses
-    	strIssueAssetBurnAddress = "AIissueAssetXXXXXXXXXXXXXXXXXhhZGt";
-    	strReissueAssetBurnAddress = "AIReissueAssetXXXXXXXXXXXXXXVEFAWu";
-    	strIssueSubAssetBurnAddress = "AIissueSubAssetXXXXXXXXXXXXXWcwhwL";
-    	strIssueUniqueAssetBurnAddress = "AIissueUniqueAssetXXXXXXXXXXWEAe58";
-    	strIssueMsgChannelAssetBurnAddress = "AIissueMsgChanneLAssetXXXXXXSjHvAY";
-    	strIssueQualifierAssetBurnAddress = "AIissueQuaLifierXXXXXXXXXXXXUgEDbC";
-    	strIssueSubQualifierAssetBurnAddress = "AIissueSubQuaLifierXXXXXXXXXVTzvv5";
-    	strIssueRestrictedAssetBurnAddress = "AIissueRestrictedXXXXXXXXXXXXzJZ1q";
-    	strAddNullQualifierTagBurnAddress = "AIaddTagBurnXXXXXXXXXXXXXXXXZQm5ya";
+    	strIssueAssetBurnAddress = "NCissueAssetXXXXXXXXXXXXXXXXXhhZGt";
+    	strReissueAssetBurnAddress = "NCReissueAssetXXXXXXXXXXXXXXVEFAWu";
+    	strIssueSubAssetBurnAddress = "NCissueSubAssetXXXXXXXXXXXXXWcwhwL";
+    	strIssueUniqueAssetBurnAddress = "NCissueUniqueAssetXXXXXXXXXXWEAe58";
+    	strIssueMsgChannelAssetBurnAddress = "NCissueMsgChanneLAssetXXXXXXSjHvAY";
+    	strIssueQualifierAssetBurnAddress = "NCissueQuaLifierXXXXXXXXXXXXUgEDbC";
+    	strIssueSubQualifierAssetBurnAddress = "NCissueSubQuaLifierXXXXXXXXXVTzvv5";
+    	strIssueRestrictedAssetBurnAddress = "NCissueRestrictedXXXXXXXXXXXXzJZ1q";
+    	strAddNullQualifierTagBurnAddress = "NCaddTagBurnXXXXXXXXXXXXXXXXZQm5ya";
 
         	//Global Burn Address
-    	strGlobalBurnAddress = "AIBurnXXXXXXXXXXXXXXXXXXXXXXWUo9FV";
+    	strGlobalBurnAddress = "NCBurnXXXXXXXXXXXXXXXXXXXXXXWUo9FV";
 
 	// NRGC Fund
     	strCommunityAutonomousAddress = "XuyCzNG3XdibTQvZgVu7ypmeVDBA1kvyev";
