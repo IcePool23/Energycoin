@@ -323,7 +323,7 @@ uint256 BestBlockHash = uint256S("0xffffffffffffffffffffffffffffffffffffffffffff
     	strGlobalBurnAddress = "NCBurnXXXXXXXXXXXXXXXXXXXXXXWUo9FV";
 
 	// NRGC Fund
-    	strCommunityAutonomousAddress = "XuyCzNG3XdibTQvZgVu7ypmeVDBA1kvyev";
+    	strCommunityAutonomousAddress = "EXsq7kkMRTtENKzKAVchTAxbwdsnzboBBc";
     	// DGW Activation
     	nDGWActivationBlock = 1;
 
