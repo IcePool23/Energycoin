@@ -341,321 +341,321 @@ uint256 BestBlockHash = uint256S("0xffffffffffffffffffffffffffffffffffffffffffff
 	}
 };
 
-/**
- * Testnet (v7)
- */
-class CTestNetParams : public CChainParams {
-public:
-	CTestNetParams() {
-    	strNetworkID = "test";
-    	consensus.nSubsidyHalvingInterval = 2100000;  //~ 4 yrs at 1 min block time
-    	consensus.nBIP34Enabled = true;
-    	consensus.nBIP65Enabled = true;
-    	consensus.nBIP66Enabled = true;
-    	consensus.nSegwitEnabled = true;
-    	consensus.nCSVEnabled = true;
-    	consensus.powLimit = uint256S("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-    	consensus.kawpowLimit = uint256S("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // Estimated starting diff for first 180 kawpow blocks
-    	consensus.nPowTargetTimespan = 2016 * 60; // 1.4 days
-    	consensus.nPowTargetSpacing = 1 * 60;
-    	consensus.fPowAllowMinDifficultyBlocks = false;
-    	consensus.fPowNoRetargeting = false;
-    	consensus.nRuleChangeActivationThreshold = 1613; // Approx 80% of 2016
-    	consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
-    	consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 0;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1893452400;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nOverrideRuleChangeActivationThreshold = 108;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nOverrideMinerConfirmationWindow = 144;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].bit = 6;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nStartTime = 0;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nTimeout = 1893452400;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nOverrideRuleChangeActivationThreshold = 108;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nOverrideMinerConfirmationWindow = 144;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_MSG_REST_ASSETS].bit = 7;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_MSG_REST_ASSETS].nStartTime = 0;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_MSG_REST_ASSETS].nTimeout = 1893452400; // Mon Dec 31 2029 23:00:00 GMT+0000
-    	consensus.vDeployments[Consensus::DEPLOYMENT_MSG_REST_ASSETS].nOverrideRuleChangeActivationThreshold = 108;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_MSG_REST_ASSETS].nOverrideMinerConfirmationWindow = 144;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_TRANSFER_SCRIPT_SIZE].bit = 8;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_TRANSFER_SCRIPT_SIZE].nStartTime = 0;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_TRANSFER_SCRIPT_SIZE].nTimeout = 1893452400;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_TRANSFER_SCRIPT_SIZE].nOverrideRuleChangeActivationThreshold = 208;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_TRANSFER_SCRIPT_SIZE].nOverrideMinerConfirmationWindow = 288;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_ENFORCE_VALUE].bit = 9;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_ENFORCE_VALUE].nStartTime = 0;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_ENFORCE_VALUE].nTimeout = 1893452400;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_ENFORCE_VALUE].nOverrideRuleChangeActivationThreshold = 108;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_ENFORCE_VALUE].nOverrideMinerConfirmationWindow = 144;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].bit = 10;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].nStartTime = 0;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].nTimeout = 1893452400;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].nOverrideRuleChangeActivationThreshold = 400;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].nOverrideMinerConfirmationWindow = 500;
+// /**
+//  * Testnet (v7)
+//  */
+// class CTestNetParams : public CChainParams {
+// public:
+// 	CTestNetParams() {
+//     	strNetworkID = "test";
+//     	consensus.nSubsidyHalvingInterval = 2100000;  //~ 4 yrs at 1 min block time
+//     	consensus.nBIP34Enabled = true;
+//     	consensus.nBIP65Enabled = true;
+//     	consensus.nBIP66Enabled = true;
+//     	consensus.nSegwitEnabled = true;
+//     	consensus.nCSVEnabled = true;
+//     	consensus.powLimit = uint256S("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+//     	consensus.kawpowLimit = uint256S("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"); // Estimated starting diff for first 180 kawpow blocks
+//     	consensus.nPowTargetTimespan = 2016 * 60; // 1.4 days
+//     	consensus.nPowTargetSpacing = 1 * 60;
+//     	consensus.fPowAllowMinDifficultyBlocks = false;
+//     	consensus.fPowNoRetargeting = false;
+//     	consensus.nRuleChangeActivationThreshold = 1613; // Approx 80% of 2016
+//     	consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 0;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1893452400;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nOverrideRuleChangeActivationThreshold = 108;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nOverrideMinerConfirmationWindow = 144;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].bit = 6;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nStartTime = 0;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nTimeout = 1893452400;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nOverrideRuleChangeActivationThreshold = 108;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nOverrideMinerConfirmationWindow = 144;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_MSG_REST_ASSETS].bit = 7;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_MSG_REST_ASSETS].nStartTime = 0;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_MSG_REST_ASSETS].nTimeout = 1893452400; // Mon Dec 31 2029 23:00:00 GMT+0000
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_MSG_REST_ASSETS].nOverrideRuleChangeActivationThreshold = 108;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_MSG_REST_ASSETS].nOverrideMinerConfirmationWindow = 144;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_TRANSFER_SCRIPT_SIZE].bit = 8;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_TRANSFER_SCRIPT_SIZE].nStartTime = 0;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_TRANSFER_SCRIPT_SIZE].nTimeout = 1893452400;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_TRANSFER_SCRIPT_SIZE].nOverrideRuleChangeActivationThreshold = 208;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_TRANSFER_SCRIPT_SIZE].nOverrideMinerConfirmationWindow = 288;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_ENFORCE_VALUE].bit = 9;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_ENFORCE_VALUE].nStartTime = 0;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_ENFORCE_VALUE].nTimeout = 1893452400;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_ENFORCE_VALUE].nOverrideRuleChangeActivationThreshold = 108;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_ENFORCE_VALUE].nOverrideMinerConfirmationWindow = 144;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].bit = 10;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].nStartTime = 0;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].nTimeout = 1893452400;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].nOverrideRuleChangeActivationThreshold = 400;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].nOverrideMinerConfirmationWindow = 500;
 
-    	// The best chain should have at least this much work.
-    	consensus.nMinimumChainWork = uint256S("0x00");
+//     	// The best chain should have at least this much work.
+//     	consensus.nMinimumChainWork = uint256S("0x00");
 
-    	// By default assume that the signatures in ancestors of this block are valid.
-    	consensus.defaultAssumeValid = uint256S("0x00");
+//     	// By default assume that the signatures in ancestors of this block are valid.
+//     	consensus.defaultAssumeValid = uint256S("0x00");
 
 
-    	pchMessageStart[0] = 0x41; // A
-    	pchMessageStart[1] = 0x49; // I
-    	pchMessageStart[2] = 0x44; // D
-    	pchMessageStart[3] = 0x50; // P	 
-    	nDefaultPort = 17002;
-    	nPruneAfterHeight = 1000;
+//     	pchMessageStart[0] = 0x41; // A
+//     	pchMessageStart[1] = 0x49; // I
+//     	pchMessageStart[2] = 0x44; // D
+//     	pchMessageStart[3] = 0x50; // P	 
+//     	nDefaultPort = 17002;
+//     	nPruneAfterHeight = 1000;
 
-		uint32_t nGenesisTime = 1714226400; // 2024-04-27 14:00:00 UTC
+// 		uint32_t nGenesisTime = 1714226400; // 2024-04-27 14:00:00 UTC
   	 
-    	genesis = CreateGenesisBlock(nGenesisTime, 21553080, 0x1e00ffff, 4, 3000 * COIN);
-    	consensus.hashGenesisBlock = genesis.GetX16RHash();
+//     	genesis = CreateGenesisBlock(nGenesisTime, 21553080, 0x1e00ffff, 4, 3000 * COIN);
+//     	consensus.hashGenesisBlock = genesis.GetX16RHash();
 
 
-    	//Test MerkleRoot and GenesisBlock
-    	assert(consensus.hashGenesisBlock == uint256S("000000181ba07f82878f548c2f3e00f176e1e9deacdccac87b13ae3885ecc3c7"));
-    	assert(genesis.hashMerkleRoot == uint256S("5cea53563cff1395d6da77cafeb5ee426ac6be7fe9166a3c0e696c38fa0be698"));
+//     	//Test MerkleRoot and GenesisBlock
+//     	assert(consensus.hashGenesisBlock == uint256S("000000181ba07f82878f548c2f3e00f176e1e9deacdccac87b13ae3885ecc3c7"));
+//     	assert(genesis.hashMerkleRoot == uint256S("5cea53563cff1395d6da77cafeb5ee426ac6be7fe9166a3c0e696c38fa0be698"));
 
-    	vFixedSeeds.clear();
-    	vSeeds.clear();
+//     	vFixedSeeds.clear();
+//     	vSeeds.clear();
 
-    	vSeeds.emplace_back("seed-testnet-raven.bitactivate.com", false);
-    	vSeeds.emplace_back("seed-testnet-raven.ravencoin.com", false);
-    	vSeeds.emplace_back("seed-testnet-raven.ravencoin.org", false);
+//     	vSeeds.emplace_back("seed-testnet-raven.bitactivate.com", false);
+//     	vSeeds.emplace_back("seed-testnet-raven.ravencoin.com", false);
+//     	vSeeds.emplace_back("seed-testnet-raven.ravencoin.org", false);
 
-	base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,20);  // A
-    	base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,20);  // A
-    	base58Prefixes[SECRET_KEY] = 	std::vector<unsigned char>(1,239);
-    	base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
-    	base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
+// 	base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,20);  // A
+//     	base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,20);  // A
+//     	base58Prefixes[SECRET_KEY] = 	std::vector<unsigned char>(1,239);
+//     	base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
+//     	base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
 
-    	// Nrgc BIP44 cointype in testnet
-    	nExtCoinType = 1;
+//     	// Nrgc BIP44 cointype in testnet
+//     	nExtCoinType = 1;
 
-    	vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
+//     	vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_test, pnSeed6_test + ARRAYLEN(pnSeed6_test));
 
-    	fDefaultConsistencyChecks = false;
-    	fRequireStandard = false;
-    	fMineBlocksOnDemand = false;
-    	fMiningRequiresPeers = true;
+//     	fDefaultConsistencyChecks = false;
+//     	fRequireStandard = false;
+//     	fMineBlocksOnDemand = false;
+//     	fMiningRequiresPeers = true;
 
-    	checkpointData = (CCheckpointData) {
-        	{
-                	{0, genesis.GetHash()}
-        	}
-    	};
+//     	checkpointData = (CCheckpointData) {
+//         	{
+//                 	{0, genesis.GetHash()}
+//         	}
+//     	};
 
-    	chainTxData = ChainTxData{
-        	// Update as we know more about the contents of the Raven chain
-        	// Stats as of 00000023b66f46d74890287a7b1157dd780c7c5fdda2b561eb96684d2b39d62e window size 43200
-        	0, // * UNIX timestamp of last known number of transactions
-        	0, 	// * total number of transactions between genesis and that timestamp
-                    	//   (the tx=... number in the SetBestChain debug.log lines)
-        	0.0    	// * estimated number of transactions per second after that timestamp
-    	};
+//     	chainTxData = ChainTxData{
+//         	// Update as we know more about the contents of the Raven chain
+//         	// Stats as of 00000023b66f46d74890287a7b1157dd780c7c5fdda2b561eb96684d2b39d62e window size 43200
+//         	0, // * UNIX timestamp of last known number of transactions
+//         	0, 	// * total number of transactions between genesis and that timestamp
+//                     	//   (the tx=... number in the SetBestChain debug.log lines)
+//         	0.0    	// * estimated number of transactions per second after that timestamp
+//     	};
 
-    	/** NRGC Start **/
-    	// Burn Amounts
-    	nIssueAssetBurnAmount = 50 * COIN;
-    	nReissueAssetBurnAmount = 10 * COIN;
-    	nIssueSubAssetBurnAmount = 10 * COIN;
-    	nIssueUniqueAssetBurnAmount = 0.5 * COIN;
-    	nIssueMsgChannelAssetBurnAmount = 10 * COIN;
-    	nIssueQualifierAssetBurnAmount = 100 * COIN;
-    	nIssueSubQualifierAssetBurnAmount = 10 * COIN;
-    	nIssueRestrictedAssetBurnAmount = 150 * COIN;
-    	nAddNullQualifierTagBurnAmount = 0.01 * COIN;
+//     	/** NRGC Start **/
+//     	// Burn Amounts
+//     	nIssueAssetBurnAmount = 50 * COIN;
+//     	nReissueAssetBurnAmount = 10 * COIN;
+//     	nIssueSubAssetBurnAmount = 10 * COIN;
+//     	nIssueUniqueAssetBurnAmount = 0.5 * COIN;
+//     	nIssueMsgChannelAssetBurnAmount = 10 * COIN;
+//     	nIssueQualifierAssetBurnAmount = 100 * COIN;
+//     	nIssueSubQualifierAssetBurnAmount = 10 * COIN;
+//     	nIssueRestrictedAssetBurnAmount = 150 * COIN;
+//     	nAddNullQualifierTagBurnAmount = 0.01 * COIN;
 
-	// 10% of NRGC Rewards for NRGC investment
-	nCommunityAutonomousAmount = 10;
+// 	// 10% of NRGC Rewards for NRGC investment
+// 	nCommunityAutonomousAmount = 10;
 
-    	// Burn Addresses
-    	strIssueAssetBurnAddress = "n1issueAssetXXXXXXXXXXXXXXXXWdnemQ";
-    	strReissueAssetBurnAddress = "n1ReissueAssetXXXXXXXXXXXXXXWG9NLd";
-    	strIssueSubAssetBurnAddress = "n1issueSubAssetXXXXXXXXXXXXXbNiH6v";
-    	strIssueUniqueAssetBurnAddress = "n1issueUniqueAssetXXXXXXXXXXS4695i";
-    	strIssueMsgChannelAssetBurnAddress = "n1issueMsgChanneLAssetXXXXXXT2PBdD";
-    	strIssueQualifierAssetBurnAddress = "n1issueQuaLifierXXXXXXXXXXXXUysLTj";
-    	strIssueSubQualifierAssetBurnAddress = "n1issueSubQuaLifierXXXXXXXXXYffPLh";
-    	strIssueRestrictedAssetBurnAddress = "n1issueRestrictedXXXXXXXXXXXXZVT9V";
-    	strAddNullQualifierTagBurnAddress = "n1addTagBurnXXXXXXXXXXXXXXXXX5oLMH";
+//     	// Burn Addresses
+//     	strIssueAssetBurnAddress = "n1issueAssetXXXXXXXXXXXXXXXXWdnemQ";
+//     	strReissueAssetBurnAddress = "n1ReissueAssetXXXXXXXXXXXXXXWG9NLd";
+//     	strIssueSubAssetBurnAddress = "n1issueSubAssetXXXXXXXXXXXXXbNiH6v";
+//     	strIssueUniqueAssetBurnAddress = "n1issueUniqueAssetXXXXXXXXXXS4695i";
+//     	strIssueMsgChannelAssetBurnAddress = "n1issueMsgChanneLAssetXXXXXXT2PBdD";
+//     	strIssueQualifierAssetBurnAddress = "n1issueQuaLifierXXXXXXXXXXXXUysLTj";
+//     	strIssueSubQualifierAssetBurnAddress = "n1issueSubQuaLifierXXXXXXXXXYffPLh";
+//     	strIssueRestrictedAssetBurnAddress = "n1issueRestrictedXXXXXXXXXXXXZVT9V";
+//     	strAddNullQualifierTagBurnAddress = "n1addTagBurnXXXXXXXXXXXXXXXXX5oLMH";
 
-	// Donation Address
-    	strCommunityAutonomousAddress = "XuyCzNG3XdibTQvZgVu7ypmeVDBA1kvyev";
+// 	// Donation Address
+//     	strCommunityAutonomousAddress = "XuyCzNG3XdibTQvZgVu7ypmeVDBA1kvyev";
 
-    	// Global Burn Address
-    	strGlobalBurnAddress = "n1BurnXXXXXXXXXXXXXXXXXXXXXXU1qejP";
+//     	// Global Burn Address
+//     	strGlobalBurnAddress = "n1BurnXXXXXXXXXXXXXXXXXXXXXXU1qejP";
 
-    	// DGW Activation
-    	nDGWActivationBlock = 1;
+//     	// DGW Activation
+//     	nDGWActivationBlock = 1;
 
-    	nMaxReorganizationDepth = 60; // 60 at 1 minute block timespan is +/- 60 minutes.
-    	nMinReorganizationPeers = 4;
-    	nMinReorganizationAge = 60 * 60 * 12; // 12 hours
+//     	nMaxReorganizationDepth = 60; // 60 at 1 minute block timespan is +/- 60 minutes.
+//     	nMinReorganizationPeers = 4;
+//     	nMinReorganizationAge = 60 * 60 * 12; // 12 hours
 
-    	nAssetActivationHeight = 1; // Asset activated block height
-    	nMessagingActivationBlock = 1; // Messaging activated block height
-    	nRestrictedActivationBlock = 1; // Restricted activated block height
+//     	nAssetActivationHeight = 1; // Asset activated block height
+//     	nMessagingActivationBlock = 1; // Messaging activated block height
+//     	nRestrictedActivationBlock = 1; // Restricted activated block height
 
-    	nKAAAWWWPOWActivationTime = nGenesisTime + 1;
-    	nKAWPOWActivationTime = nKAAAWWWPOWActivationTime;
-    	/** NRGC End **/
-	}
-};
+//     	nKAAAWWWPOWActivationTime = nGenesisTime + 1;
+//     	nKAWPOWActivationTime = nKAAAWWWPOWActivationTime;
+//     	/** NRGC End **/
+// 	}
+// };
 
-/**
- * Regression test
- */
-class CRegTestParams : public CChainParams {
-public:
-	CRegTestParams() {
-    	strNetworkID = "regtest";
-    	consensus.nBIP34Enabled = true;
-    	consensus.nBIP65Enabled = true; // 000000000000000004c2b624ed5d7756c508d90fd0da2c7c679febfa6c4735f0
-    	consensus.nBIP66Enabled = true;
-    	consensus.nSegwitEnabled = true;
-    	consensus.nCSVEnabled = true;
-    	consensus.nSubsidyHalvingInterval = 150;
-    	consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-    	consensus.kawpowLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-    	consensus.nPowTargetTimespan = 2016 * 60; // 1.4 days
-    	consensus.nPowTargetSpacing = 1 * 60;
-    	consensus.fPowAllowMinDifficultyBlocks = true;
-    	consensus.fPowNoRetargeting = true;
-    	consensus.nRuleChangeActivationThreshold = 108; // 75% for testchains
-    	consensus.nMinerConfirmationWindow = 144; // Faster than normal for regtest (144 instead of 2016)
-    	consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 0;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1893452400;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nOverrideRuleChangeActivationThreshold = 108;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nOverrideMinerConfirmationWindow = 144;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].bit = 6;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nStartTime = 0;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nTimeout = 1893452400;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nOverrideRuleChangeActivationThreshold = 108;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nOverrideMinerConfirmationWindow = 144;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_MSG_REST_ASSETS].bit = 7;  // Assets (RIP5)
-    	consensus.vDeployments[Consensus::DEPLOYMENT_MSG_REST_ASSETS].nStartTime = 0; // GMT: Sun Mar 3, 2019 5:00:00 PM
-    	consensus.vDeployments[Consensus::DEPLOYMENT_MSG_REST_ASSETS].nTimeout = 1893452400;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_MSG_REST_ASSETS].nOverrideRuleChangeActivationThreshold = 108;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_MSG_REST_ASSETS].nOverrideMinerConfirmationWindow = 144;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_TRANSFER_SCRIPT_SIZE].bit = 8;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_TRANSFER_SCRIPT_SIZE].nStartTime = 0;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_TRANSFER_SCRIPT_SIZE].nTimeout = 1893452400;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_TRANSFER_SCRIPT_SIZE].nOverrideRuleChangeActivationThreshold = 208;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_TRANSFER_SCRIPT_SIZE].nOverrideMinerConfirmationWindow = 288;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_ENFORCE_VALUE].bit = 9;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_ENFORCE_VALUE].nStartTime = 0;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_ENFORCE_VALUE].nTimeout = 1893452400;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_ENFORCE_VALUE].nOverrideRuleChangeActivationThreshold = 108;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_ENFORCE_VALUE].nOverrideMinerConfirmationWindow = 144;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].bit = 10;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].nStartTime = 0;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].nTimeout = 1893452400;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].nOverrideRuleChangeActivationThreshold = 400;
-    	consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].nOverrideMinerConfirmationWindow = 500;
+// /**
+//  * Regression test
+//  */
+// class CRegTestParams : public CChainParams {
+// public:
+// 	CRegTestParams() {
+//     	strNetworkID = "regtest";
+//     	consensus.nBIP34Enabled = true;
+//     	consensus.nBIP65Enabled = true; // 000000000000000004c2b624ed5d7756c508d90fd0da2c7c679febfa6c4735f0
+//     	consensus.nBIP66Enabled = true;
+//     	consensus.nSegwitEnabled = true;
+//     	consensus.nCSVEnabled = true;
+//     	consensus.nSubsidyHalvingInterval = 150;
+//     	consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+//     	consensus.kawpowLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+//     	consensus.nPowTargetTimespan = 2016 * 60; // 1.4 days
+//     	consensus.nPowTargetSpacing = 1 * 60;
+//     	consensus.fPowAllowMinDifficultyBlocks = true;
+//     	consensus.fPowNoRetargeting = true;
+//     	consensus.nRuleChangeActivationThreshold = 108; // 75% for testchains
+//     	consensus.nMinerConfirmationWindow = 144; // Faster than normal for regtest (144 instead of 2016)
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 0;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1893452400;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nOverrideRuleChangeActivationThreshold = 108;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nOverrideMinerConfirmationWindow = 144;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].bit = 6;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nStartTime = 0;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nTimeout = 1893452400;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nOverrideRuleChangeActivationThreshold = 108;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_ASSETS].nOverrideMinerConfirmationWindow = 144;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_MSG_REST_ASSETS].bit = 7;  // Assets (RIP5)
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_MSG_REST_ASSETS].nStartTime = 0; // GMT: Sun Mar 3, 2019 5:00:00 PM
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_MSG_REST_ASSETS].nTimeout = 1893452400;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_MSG_REST_ASSETS].nOverrideRuleChangeActivationThreshold = 108;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_MSG_REST_ASSETS].nOverrideMinerConfirmationWindow = 144;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_TRANSFER_SCRIPT_SIZE].bit = 8;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_TRANSFER_SCRIPT_SIZE].nStartTime = 0;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_TRANSFER_SCRIPT_SIZE].nTimeout = 1893452400;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_TRANSFER_SCRIPT_SIZE].nOverrideRuleChangeActivationThreshold = 208;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_TRANSFER_SCRIPT_SIZE].nOverrideMinerConfirmationWindow = 288;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_ENFORCE_VALUE].bit = 9;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_ENFORCE_VALUE].nStartTime = 0;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_ENFORCE_VALUE].nTimeout = 1893452400;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_ENFORCE_VALUE].nOverrideRuleChangeActivationThreshold = 108;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_ENFORCE_VALUE].nOverrideMinerConfirmationWindow = 144;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].bit = 10;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].nStartTime = 0;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].nTimeout = 1893452400;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].nOverrideRuleChangeActivationThreshold = 400;
+//     	consensus.vDeployments[Consensus::DEPLOYMENT_COINBASE_ASSETS].nOverrideMinerConfirmationWindow = 500;
 
-    	// The best chain should have at least this much work.
-    	consensus.nMinimumChainWork = uint256S("0x00");
+//     	// The best chain should have at least this much work.
+//     	consensus.nMinimumChainWork = uint256S("0x00");
 
-    	// By default assume that the signatures in ancestors of this block are valid.
-    	consensus.defaultAssumeValid = uint256S("0x00");
+//     	// By default assume that the signatures in ancestors of this block are valid.
+//     	consensus.defaultAssumeValid = uint256S("0x00");
 
-    	pchMessageStart[0] = 0x41; // A
-    	pchMessageStart[1] = 0x49; // I
-    	pchMessageStart[2] = 0x44; // D
-    	pchMessageStart[3] = 0x50; // P
-    	nDefaultPort = 17003;
-    	nPruneAfterHeight = 1000;
+//     	pchMessageStart[0] = 0x41; // A
+//     	pchMessageStart[1] = 0x49; // I
+//     	pchMessageStart[2] = 0x44; // D
+//     	pchMessageStart[3] = 0x50; // P
+//     	nDefaultPort = 17003;
+//     	nPruneAfterHeight = 1000;
 
-   		uint32_t nGenesisTime = 1714226400; // 2024-04-27 14:00:00 UTC
+//    		uint32_t nGenesisTime = 1714226400; // 2024-04-27 14:00:00 UTC
 
 
-    	genesis = CreateGenesisBlock(nGenesisTime, 1, 0x207fffff, 4, 600 * COIN);
-    	consensus.hashGenesisBlock = genesis.GetX16RHash();
+//     	genesis = CreateGenesisBlock(nGenesisTime, 1, 0x207fffff, 4, 600 * COIN);
+//     	consensus.hashGenesisBlock = genesis.GetX16RHash();
 
-    	assert(consensus.hashGenesisBlock == uint256S("00000035b0150cb21b97bbc9b3cce325d623e2debf333925f383e58a57fd6961"));
-    	assert(genesis.hashMerkleRoot == uint256S("e5730bfde1b85e96d78d415c5135cf3c789c37d895d8cbacf7e6e9d64c3f00af"));
+//     	assert(consensus.hashGenesisBlock == uint256S("00000035b0150cb21b97bbc9b3cce325d623e2debf333925f383e58a57fd6961"));
+//     	assert(genesis.hashMerkleRoot == uint256S("e5730bfde1b85e96d78d415c5135cf3c789c37d895d8cbacf7e6e9d64c3f00af"));
 
-    	vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
-    	vSeeds.clear();  	//!< Regtest mode doesn't have any DNS seeds.
+//     	vFixedSeeds.clear(); //!< Regtest mode doesn't have any fixed seeds.
+//     	vSeeds.clear();  	//!< Regtest mode doesn't have any DNS seeds.
 
-    	fDefaultConsistencyChecks = true;
-    	fRequireStandard = false;
-    	fMineBlocksOnDemand = true;
+//     	fDefaultConsistencyChecks = true;
+//     	fRequireStandard = false;
+//     	fMineBlocksOnDemand = true;
 
-    	checkpointData = (CCheckpointData) {
-        	{
-        	}
-    	};
+//     	checkpointData = (CCheckpointData) {
+//         	{
+//         	}
+//     	};
 
-    	chainTxData = ChainTxData{
-        	0,
-        	0,
-        	0
-    	};
+//     	chainTxData = ChainTxData{
+//         	0,
+//         	0,
+//         	0
+//     	};
 
-    	base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,76);  // X and 0x4c
-    	base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,76);  // X and 0x4c
-    	base58Prefixes[SECRET_KEY] = 	std::vector<unsigned char>(1,239);
-    	base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
-    	base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
+//     	base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,76);  // X and 0x4c
+//     	base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,76);  // X and 0x4c
+//     	base58Prefixes[SECRET_KEY] = 	std::vector<unsigned char>(1,239);
+//     	base58Prefixes[EXT_PUBLIC_KEY] = {0x04, 0x35, 0x87, 0xCF};
+//     	base58Prefixes[EXT_SECRET_KEY] = {0x04, 0x35, 0x83, 0x94};
 
-    	// Raven BIP44 cointype in regtest
-    	nExtCoinType = 1;
+//     	// Raven BIP44 cointype in regtest
+//     	nExtCoinType = 1;
 
-    	/** NRGC Start **/
-    	// Burn Amounts
-    	nIssueAssetBurnAmount = 50 * COIN;
-    	nReissueAssetBurnAmount = 10 * COIN;
-    	nIssueSubAssetBurnAmount = 10 * COIN;
-    	nIssueUniqueAssetBurnAmount = 0.5 * COIN;
-    	nIssueMsgChannelAssetBurnAmount = 10 * COIN;
-    	nIssueQualifierAssetBurnAmount = 100 * COIN;
-    	nIssueSubQualifierAssetBurnAmount = 10 * COIN;
-    	nIssueRestrictedAssetBurnAmount = 150 * COIN;
-    	nAddNullQualifierTagBurnAmount = 0.01 * COIN;
+//     	/** NRGC Start **/
+//     	// Burn Amounts
+//     	nIssueAssetBurnAmount = 50 * COIN;
+//     	nReissueAssetBurnAmount = 10 * COIN;
+//     	nIssueSubAssetBurnAmount = 10 * COIN;
+//     	nIssueUniqueAssetBurnAmount = 0.5 * COIN;
+//     	nIssueMsgChannelAssetBurnAmount = 10 * COIN;
+//     	nIssueQualifierAssetBurnAmount = 100 * COIN;
+//     	nIssueSubQualifierAssetBurnAmount = 10 * COIN;
+//     	nIssueRestrictedAssetBurnAmount = 150 * COIN;
+//     	nAddNullQualifierTagBurnAmount = 0.01 * COIN;
 
-	// 10% of NRGC Rewards for NRGC investment
-	nCommunityAutonomousAmount = 10;
+// 	// 10% of NRGC Rewards for NRGC investment
+// 	nCommunityAutonomousAmount = 10;
 
-    	// Burn Addresses
-    	strIssueAssetBurnAddress = "n1issueAssetXXXXXXXXXXXXXXXXWdnemQ";
-    	strReissueAssetBurnAddress = "n1ReissueAssetXXXXXXXXXXXXXXWG9NLd";
-    	strIssueSubAssetBurnAddress = "n1issueSubAssetXXXXXXXXXXXXXbNiH6v";
-    	strIssueUniqueAssetBurnAddress = "n1issueUniqueAssetXXXXXXXXXXS4695i";
-    	strIssueMsgChannelAssetBurnAddress = "n1issueMsgChanneLAssetXXXXXXT2PBdD";
-    	strIssueQualifierAssetBurnAddress = "n1issueQuaLifierXXXXXXXXXXXXUysLTj";
-    	strIssueSubQualifierAssetBurnAddress = "n1issueSubQuaLifierXXXXXXXXXYffPLh";
-    	strIssueRestrictedAssetBurnAddress = "n1issueRestrictedXXXXXXXXXXXXZVT9V";
-    	strAddNullQualifierTagBurnAddress = "n1addTagBurnXXXXXXXXXXXXXXXXX5oLMH";
+//     	// Burn Addresses
+//     	strIssueAssetBurnAddress = "n1issueAssetXXXXXXXXXXXXXXXXWdnemQ";
+//     	strReissueAssetBurnAddress = "n1ReissueAssetXXXXXXXXXXXXXXWG9NLd";
+//     	strIssueSubAssetBurnAddress = "n1issueSubAssetXXXXXXXXXXXXXbNiH6v";
+//     	strIssueUniqueAssetBurnAddress = "n1issueUniqueAssetXXXXXXXXXXS4695i";
+//     	strIssueMsgChannelAssetBurnAddress = "n1issueMsgChanneLAssetXXXXXXT2PBdD";
+//     	strIssueQualifierAssetBurnAddress = "n1issueQuaLifierXXXXXXXXXXXXUysLTj";
+//     	strIssueSubQualifierAssetBurnAddress = "n1issueSubQuaLifierXXXXXXXXXYffPLh";
+//     	strIssueRestrictedAssetBurnAddress = "n1issueRestrictedXXXXXXXXXXXXZVT9V";
+//     	strAddNullQualifierTagBurnAddress = "n1addTagBurnXXXXXXXXXXXXXXXXX5oLMH";
 
-	// Donation Address
-    	strCommunityAutonomousAddress = "Axxxxxxxxxxxxxxxxxxxxxxxxxxxx";
+// 	// Donation Address
+//     	strCommunityAutonomousAddress = "Axxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 
-    	// Global Burn Address
-    	strGlobalBurnAddress = "n1BurnXXXXXXXXXXXXXXXXXXXXXXU1qejP";
+//     	// Global Burn Address
+//     	strGlobalBurnAddress = "n1BurnXXXXXXXXXXXXXXXXXXXXXXU1qejP";
 
-    	// DGW Activation
-    	nDGWActivationBlock = 200;
+//     	// DGW Activation
+//     	nDGWActivationBlock = 200;
 
-    	nMaxReorganizationDepth = 60; // 60 at 1 minute block timespan is +/- 60 minutes.
-    	nMinReorganizationPeers = 4;
-    	nMinReorganizationAge = 60 * 60 * 12; // 12 hours
+//     	nMaxReorganizationDepth = 60; // 60 at 1 minute block timespan is +/- 60 minutes.
+//     	nMinReorganizationPeers = 4;
+//     	nMinReorganizationAge = 60 * 60 * 12; // 12 hours
 
-    	nAssetActivationHeight = 0; // Asset activated block height
-    	nMessagingActivationBlock = 0; // Messaging activated block height
-    	nRestrictedActivationBlock = 0; // Restricted activated block height
+//     	nAssetActivationHeight = 0; // Asset activated block height
+//     	nMessagingActivationBlock = 0; // Messaging activated block height
+//     	nRestrictedActivationBlock = 0; // Restricted activated block height
 
-    	// TODO, we need to figure out what to do with this for regtest. This effects the unit tests
-    	// For now we can use a timestamp very far away
-    	// If you are looking to test the kawpow hashing function in regtest. You will need to change this number
-    	nKAAAWWWPOWActivationTime = 3582830167;
-    	nKAWPOWActivationTime = nKAAAWWWPOWActivationTime;
-    	/** NRGC End **/
-	}
-};
+//     	// TODO, we need to figure out what to do with this for regtest. This effects the unit tests
+//     	// For now we can use a timestamp very far away
+//     	// If you are looking to test the kawpow hashing function in regtest. You will need to change this number
+//     	nKAAAWWWPOWActivationTime = 3582830167;
+//     	nKAWPOWActivationTime = nKAAAWWWPOWActivationTime;
+//     	/** NRGC End **/
+// 	}
+// };
 
 static std::unique_ptr<CChainParams> globalChainParams;
 
